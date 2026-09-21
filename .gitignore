@@ -1,0 +1,64 @@
+# 白名单模式：默认忽略仓库根目录下的全部内容
+/*
+
+# 仅跟踪仓库规则和自建业务 skill
+!/.gitignore
+!/icon-select/
+!/icon-select/**
+
+# 系统与文件管理器垃圾文件
+**/.DS_Store
+**/Thumbs.db
+**/Desktop.ini
+**/._*
+
+# 编辑器、IDE 与临时文件
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo
+**/*~
+**/.history/
+
+# 日志、缓存与测试输出
+**/*.log
+**/.cache/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.coverage
+**/coverage/
+**/htmlcov/
+
+# Python 生成文件与虚拟环境
+**/__pycache__/
+**/*.py[cod]
+**/.venv/
+**/venv/
+**/env/
+
+# Node.js 依赖与包管理器缓存
+**/node_modules/
+**/.npm/
+**/.yarn/
+**/.pnpm-store/
+
+# 构建产物与临时目录
+**/dist/
+**/build/
+**/out/
+**/tmp/
+**/temp/
+
+# 本地配置与敏感环境变量（保留示例文件）
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
+
+# 压缩包与系统备份
+**/*.zip
+**/*.tar
+**/*.tar.gz
+**/*.tgz
+**/*.bak
