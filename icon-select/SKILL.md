@@ -5,13 +5,14 @@ description: 为界面中的一个或多个对象提供 icon 候选方案，并�
 
 # Icon 方案展示
 
-当用户要求给出 icon 方案选择时，只输出一个可直接打开的、自包含的极简 HTML 文件，**禁止附加任何原因解释、长篇分析或复杂交互**。
+当用户要求给出 icon 方案选择时，只输出一个可直接打开的、自包含的极简 HTML 文件，**不要在 HTML 之外附加原因解释、长篇分析或复杂交互**。
 
 - 页面使用**浅色纯色背景、居中内容区和灰蓝色文字**；保持充足**留白、细线条和低装饰感**；需要适配窄屏。
 - 候选项以**简洁网格**排列，每项只包含等尺寸的 icon 与其名称；优先内联 SVG，避免依赖构建工具。
 - 每个对象默认提供 **6 个** icon 候选；若用户要求“多一点”或更多方案但未指定具体数量，则为每个对象提供 **10 个**；用户明确指定数量时，以用户要求为准。
 - 设计多个对象时，需要为每个对象使用**小节标题**分别展示候选网格，相邻小节之间用**粗分隔线**隔开。
-- 除非用户另有要求，不加入任何卡片边框、阴影、渐变、说明段落、推荐排序、选中状态或其他装饰性元素。
+- 每个对象的标题下方放一行简短推荐文案，只需要根据项目实际情况和视觉效果给出最推荐的一个即可。
+- 除非用户另有要求，不加入任何卡片边框、阴影、渐变、额外说明段落、候选排序、选中状态或其他装饰性元素。
 
 ```html
 <!doctype html>
@@ -31,7 +32,14 @@ description: 为界面中的一个或多个对象提供 icon 候选方案，并�
     }
     main { max-width: 760px; margin: 64px auto; padding: 0 32px; }
     h1 { margin: 0 0 48px; color: #273244; font-size: 28px; font-weight: 600; }
-    h2 { margin: 0 0 16px; color: #3d495b; font-size: 16px; font-weight: 600; }
+    h2 { margin: 0 0 12px; color: #3d495b; font-size: 16px; font-weight: 600; }
+    .recommendation {
+      margin: 0 0 12px;
+      color: #7b8798;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .recommendation strong { color: #4c596d; font-weight: 600; }
     section + section { margin-top: 40px; padding-top: 40px; border-top: 4px solid #dfe5ee; }
     ul {
       display: grid;
@@ -56,6 +64,7 @@ description: 为界面中的一个或多个对象提供 icon 候选方案，并�
 
     <section aria-labelledby="repository-title">
       <h2 id="repository-title">仓库</h2>
+      <p class="recommendation">推荐 <strong>Archive</strong> — “归档盒”轮廓最直接，识别成本最低。</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg><span>Archive</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span>Box</span></li>
@@ -68,6 +77,7 @@ description: 为界面中的一个或多个对象提供 icon 候选方案，并�
 
     <section aria-labelledby="template-title">
       <h2 id="template-title">模板</h2>
+      <p class="recommendation">推荐 <strong>LayoutTemplate</strong> — 分区结构清晰，最贴近“可复用页面骨架”的含义。</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg><span>LayoutTemplate</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg><span>FileText</span></li>
