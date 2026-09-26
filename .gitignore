@@ -5,6 +5,8 @@
 !/.gitignore
 !/icon-select/
 !/icon-select/**
+!/standard-commit/
+!/standard-commit/**
 
 # 系统与文件管理器垃圾文件
 **/.DS_Store
