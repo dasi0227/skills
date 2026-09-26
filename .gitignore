@@ -3,6 +3,8 @@
 
 # 仅跟踪仓库规则和自建业务 skill
 !/.gitignore
+!/create-221g-documents/
+!/create-221g-documents/**
 !/icon-select/
 !/icon-select/**
 !/standard-commit/

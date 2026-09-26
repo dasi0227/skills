@@ -1,0 +1,73 @@
+% XeLaTeX 主文件。内容填写在 info.tex，样式参数位于 ../style.tex。
+\documentclass[10pt,a4paper]{article}
+\input{../style.tex}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={Booking}}
+\raggedbottom
+
+% 空单元格显示短横线。
+\newcommand{\bookingvalue}[1]{\ifblank{#1}{\textemdash}{#1}}
+\newcommand{\noterows}{}
+\newcommand{\noterow}[1]{\appto\noterows{\item #1}}
+% 出发/到达单元格：机场、城市、日期时间各占一行。
+\newcommand{\flightendpoint}[3]{%
+  \bookingvalue{#1}\newline
+  \bookingvalue{#2}\newline
+  \bookingvalue{#3}}
+\newcommand{\flightrows}{}
+\newcommand{\flightrow}[7]{%
+  \ifdefempty{\flightrows}{}{\appto\flightrows{\hline}}%
+  \appto\flightrows{\bookingvalue{#1} & \flightendpoint{#2}{#3}{#4} & \flightendpoint{#5}{#6}{#7}\tabularnewline}}
+\newcommand{\accommodationrows}{}
+\newcommand{\accommodationrow}[7]{%
+  \ifdefempty{\accommodationrows}{}{\appto\accommodationrows{\hline}}%
+  \appto\accommodationrows{\bookingvalue{#1} & \mbox{\bookingvalue{#2}}\newline\mbox{\bookingvalue{#3}} & \bookingvalue{#4} & \bookingvalue{#5} & \bookingvalue{#6} & \bookingvalue{#7}\tabularnewline}}
+\input{info.tex}
+
+% 以正文宽度计算各列，列宽和字号统一由 style.tex 控制。
+\newlength{\flightEndpointWidth}
+\newlength{\accommodationAddressWidth}
+\newcommand{\bookingtablestyle}{%
+  \tablestyle
+  \setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}%
+  \setlength{\LTleft}{0pt}\setlength{\LTright}{0pt plus 1fill}}
+\newcommand{\flightheader}{%
+  \headcell{Flight} & \headcell{Departure} & \headcell{Arrival}\tabularnewline\tableheadrule}
+\newcommand{\accommodationheader}{%
+  \headcell{City} & \headcell{Date} & \headcell{Stay} & \headcell{Contact} & \headcell{Address} & \headcell{ZIP code}\tabularnewline\tableheadrule}
+
+\begin{document}
+\documenttitle{Booking}
+
+\sectionhead[\subtitleBodyGap]{Personal Information}
+\personalinfo
+
+\sectionhead{Flight Information}
+\begingroup
+\bookingtablestyle
+\setlength{\flightEndpointWidth}{\dimexpr(\linewidth-\bookingFlightWidth-6\tabcolsep)/2\relax}
+\begin{longtable}{L{\bookingFlightWidth} L{\flightEndpointWidth} L{\flightEndpointWidth}}
+\flightheader\endfirsthead
+\flightheader\endhead
+\flightrows
+\end{longtable}
+\endgroup
+
+\sectionhead{Accommodation Information}
+\begingroup
+\bookingtablestyle
+\setlength{\accommodationAddressWidth}{\dimexpr\linewidth-\bookingCityWidth-\bookingDateWidth-\bookingStayWidth-\bookingContactWidth-\bookingPostalWidth-12\tabcolsep\relax}
+\begin{longtable}{L{\bookingCityWidth} L{\bookingDateWidth} L{\bookingStayWidth} L{\bookingContactWidth} L{\accommodationAddressWidth} L{\bookingPostalWidth}}
+\accommodationheader\endfirsthead
+\accommodationheader\endhead
+\accommodationrows
+\end{longtable}
+\endgroup
+\sectionhead{Note}
+\begin{minipage}{\linewidth}
+\fontsize{\noteSize}{\noteLeading}\selectfont
+\begin{itemize}[leftmargin=\noteLeftMargin,label=\textbullet,topsep=0pt,partopsep=0pt,itemsep=\noteItemGap,parsep=0pt]
+  \noterows
+\end{itemize}
+\end{minipage}\par
+\end{document}

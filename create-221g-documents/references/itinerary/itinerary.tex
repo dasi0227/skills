@@ -1,0 +1,78 @@
+% ============================================================
+%  ONE-PAGE U.S. VISA TRAVEL ITINERARY
+%  单面 A4、黑白、紧凑排版。所有内容位于 info.tex。
+% ============================================================
+\documentclass[10pt]{article}
+
+\input{../style.tex}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+% ---------- 从 info.tex 收集数据 ----------
+\newcommand{\entryDate}[1]{\def\entryDateValue{#1}}
+\newcommand{\exitDate}[1]{\def\exitDateValue{#1}}
+\newcommand{\tripDuration}[1]{\def\tripDurationValue{#1}}
+\newcommand{\destinations}[1]{\def\destinationsValue{#1}}
+\newcommand{\arrivalFlight}[1]{\def\arrivalFlightValue{#1}}
+\newcommand{\arrivalCity}[1]{\def\arrivalCityValue{#1}}
+\newcommand{\departureFlight}[1]{\def\departureFlightValue{#1}}
+\newcommand{\departureCity}[1]{\def\departureCityValue{#1}}
+\newcommand{\travelParty}[1]{\def\travelPartyValue{#1}}
+\newcommand{\budget}[1]{\def\budgetValue{#1}}
+
+
+\newcommand{\dayrows}{}
+\newcommand{\dayrow}[5]{%
+  \ifdefempty{\dayrows}{}{\appto\dayrows{\hline}}%
+  \appto\dayrows{%
+    #1 & #2 & #3 & #4 & #5\tabularnewline}}
+
+\newcommand{\noterows}{}
+\newcommand{\noterow}[1]{\appto\noterows{\item #1}}
+
+\input{info.tex}
+
+\begin{document}
+
+% ---------- 标题 ----------
+\documenttitle{Itinerary}
+
+% ---------- 个人信息 ----------
+\sectionhead[\subtitleBodyGap]{Personal information}
+\personalinfo
+
+% ---------- 行程摘要 ----------
+\sectionhead{Trip summary}
+\begin{minipage}{\linewidth}
+\smallvaluefont
+\renewcommand{\tabularxcolumn}[1]{p{#1}}
+\begin{tabularx}{\linewidth}{@{}>{\summarykeyfont}l@{\hspace{\summaryKeyValueGap}}>{\RaggedRight\arraybackslash}X@{}}
+  ARRIVAL DATE / FLIGHT / CITY & \entryDateValue\ / \arrivalFlightValue\ / \arrivalCityValue \\[\summaryRowGap]
+  DEPARTURE DATE / FLIGHT / CITY & \exitDateValue\ / \departureFlightValue\ / \departureCityValue \\[\summaryRowGap]
+  DESTINATION CITIES & \destinationsValue \\[\summaryRowGap]
+  DURATION & \tripDurationValue \\[\summaryRowGap]
+  TRAVEL COMPANIONS & \travelPartyValue \\[\summaryRowGap]
+  BUDGET & \budgetValue
+\end{tabularx}
+\end{minipage}\par
+
+% ---------- 主行程表 ----------
+\sectionhead{DAILY SCHEDULE}
+\begin{minipage}{\linewidth}
+\tablestyle
+\begin{tabularx}{\textwidth}{L{\itineraryDateWidth} L{\itineraryLocationWidth} Y L{\itineraryAccommodationWidth} L{\itineraryTransportWidth}}
+  \headcell{Date} & \headcell{Location} & \headcell{Plan} & \headcell{Accommodation} & \headcell{Transport} \\
+  \tableheadrule
+  \dayrows
+\end{tabularx}
+\end{minipage}\par
+
+% ---------- 说明 ----------
+\sectionhead{Note}
+\begin{minipage}{\linewidth}
+\fontsize{\noteSize}{\noteLeading}\selectfont
+\begin{itemize}[leftmargin=\noteLeftMargin,label=\textbullet,topsep=0pt,partopsep=0pt,itemsep=\noteItemGap,parsep=0pt]
+  \noterows
+\end{itemize}
+\end{minipage}\par
+
+\end{document}

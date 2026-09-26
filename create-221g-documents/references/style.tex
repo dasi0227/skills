@@ -1,0 +1,212 @@
+% ============================================================
+%   字号、行距：不写单位，默认 pt
+%   边距、间距、线宽：必须带单位
+%   字重：\bfseries 为粗体，\mediumseries 为中等，\mdseries 为常规。
+%   灰度：0 为黑色，1 为白色，数值越大颜色越浅。
+% ============================================================
+
+% ---------- 页面 ----------
+\newcommand{\pageLeftMargin}{13mm}       % 左页边距
+\newcommand{\pageRightMargin}{13mm}      % 右页边距
+\newcommand{\pageTopMargin}{15mm}        % 上页边距
+\newcommand{\pageBottomMargin}{12mm}     % 下页边距
+
+% ---------- 文档大标题与副标题 ----------
+\newcommand{\titleSize}{17}              % Itinerary / Resume / Booking 字号
+\newcommand{\titleLeading}{19}           % 大标题行距
+\newcommand{\titleWeight}{\bfseries}     % 大标题字重
+\newcommand{\subtitleSize}{8}            % 签证副标题字号
+\newcommand{\subtitleLeading}{9}         % 副标题行距
+\newcommand{\subtitleWeight}{\mdseries}  % 副标题字重
+\newcommand{\titleSubtitleGap}{5pt}      % 大标题与副标题之间的间距
+\newcommand{\subtitleBodyGap}{10pt}      % 首个模块的上间距；保留 center 环境自带留白
+
+% ---------- 模块标题 ----------
+\newcommand{\sectionTitleSize}{11}       % PERSONAL INFORMATION 等模块标题字号
+\newcommand{\sectionTitleLeading}{12}    % 模块标题行距
+\newcommand{\sectionTitleWeight}{\bfseries}
+\newcommand{\sectionTopGap}{20pt}        % 普通模块标题上方间距；首个模块用 subtitleBodyGap
+\newcommand{\sectionRuleGap}{3pt}        % 模块标题文字与下方横线的间距
+\newcommand{\sectionBottomGap}{8pt}      % 模块横线与其下方内容的间距
+\newcommand{\sectionRuleWidth}{0.65pt}   % 模块标题下方横线的粗细
+
+% ---------- 正文与字段 ----------
+\newcommand{\bodySize}{10}               % 普通正文：简历个人信息、实习内容、其它信息
+\newcommand{\bodyLeading}{13.7}          % 普通正文行距；不改变表格和小字字段的独立字号
+\newcommand{\bodyWeight}{\mdseries}      % 普通正文字重
+\newcommand{\fieldKeyWeight}{\mediumseries} % 个人信息、其它信息的键名：中等字重，介于常规和粗体之间
+\newcommand{\fieldValueWeight}{\mdseries}% 字段值字重
+\newcommand{\smallValueSize}{9}          % 行程摘要：字段值字号
+\newcommand{\smallValueLeading}{11}      % 对应字段值行距
+\newcommand{\summaryKeySize}{7.5}        % Trip Summary 左侧字段键字号
+\newcommand{\summaryKeyWeight}{\bfseries}% Trip Summary 字段键字重，独立于个人信息
+\newcommand{\summaryKeyValueGap}{10mm}   % Trip Summary 左侧标签与右侧内容的间距
+\newcommand{\summaryRowGap}{4pt}         % Trip Summary 相邻两行的附加间距
+
+% ---------- 个人信息：三份文档共用 ----------
+% 所有字段键自动转为大写，不带冒号；每两个字段一行，宽字段独占一行。
+\newcommand{\personalColumnGap}{8mm}     % 个人信息左右两组字段之间的间距
+\newcommand{\personalLeftKeyWidth}{31mm}         % 左侧字段键列宽
+\newcommand{\personalRightKeyWidth}{36mm}        % 右侧字段键列宽
+\newcommand{\personalKeyValueGap}{2mm}           % 个人信息键与值之间的间距
+\newcommand{\personalRowGap}{1.7mm}      % 个人信息每行之后的间距
+
+% ---------- 表格：三份文档共用 ----------
+\newcommand{\tableBodySize}{9.2}         % 表格正文字号，独立于普通正文
+\newcommand{\tableBodyLeading}{11.4}     % 表格正文基础行距
+\newcommand{\tableHeaderSize}{7.5}       % 表头字号
+\newcommand{\tableHeaderLeading}{8.5}    % 表头行距
+\newcommand{\tableHeaderWeight}{\bfseries}
+\newcommand{\tableCellPadding}{4pt}      % 单元格左右各自的留白
+\newcommand{\tableRowStretch}{1.4}       % 行高倍率；越大越疏朗
+\newcommand{\tableRowRuleWidth}{0.35pt}  % 数据行之间的细横线；最后一行下方不画线
+\newcommand{\tableHeaderRuleWidth}{0.8pt}% 表头下方横线的粗细
+
+% ---------- Itinerary 专用尺寸 ----------
+\newcommand{\itineraryDateWidth}{12mm}         % 行程表日期列；PLAN 自动占据剩余宽度
+\newcommand{\itineraryLocationWidth}{25mm}     % 行程表地点列
+\newcommand{\itineraryAccommodationWidth}{32mm}% 行程表住宿列
+\newcommand{\itineraryTransportWidth}{21mm}    % 行程表交通列
+\newcommand{\noteSize}{9}                      % Note 正文字号
+\newcommand{\noteLeading}{11.5}                % Note 行距
+\newcommand{\noteLeftMargin}{12pt}            % Note 项目符号列表缩进
+\newcommand{\noteItemGap}{3pt}                 % Note 各条之间的附加间距
+
+% ---------- Resume 专用尺寸 ----------
+\newcommand{\resumeTableFirstWidth}{60mm}      % 教育/出国表格第一列宽度
+\newcommand{\resumeTableSecondWidth}{76mm}     % 两张表格第二列宽度；日期列使用剩余宽度
+\newcommand{\internshipCompanyWidth}{60mm}     % 实习公司名称列宽
+\newcommand{\internshipColumnGap}{4mm}        % 公司、职位、日期之间的间距
+\newcommand{\internshipCompanyWeight}{\bfseries}
+\newcommand{\internshipRoleShape}{\itshape}   % 职位斜体；改为 \upshape 则使用直立体
+\newcommand{\internshipDateSize}{9.5}         % 实习起止日期字号
+\newcommand{\internshipDateLeading}{13}       % 实习起止日期行距
+\newcommand{\internshipTopGap}{3mm}           % 每段实习上方的间距
+\newcommand{\internshipOverviewGap}{0.8mm}    % 非空实习概述与标题的间距
+\newcommand{\internshipListLeftMargin}{4.7mm} % 实习职责列表缩进
+\newcommand{\internshipBulletGap}{2mm}        % 项目符号与文字的间距
+\newcommand{\internshipListTopGap}{1.5mm}     % 职责列表上下留白
+\newcommand{\internshipItemGap}{1.3mm}        % 三条实习职责之间的附加间距
+\newcommand{\otherKeyWidth}{43mm}             % Other Information 字段键列宽
+\newcommand{\otherKeyValueGap}{3mm}           % Other Information 键与值的间距
+\newcommand{\otherRowGap}{1.5mm}              % Other Information 每行之后的间距
+
+% ---------- Booking 专用尺寸 ----------
+\newcommand{\bookingFlightWidth}{20mm}       % 航班号列；出发/到达平分剩余宽度
+\newcommand{\bookingCityWidth}{22mm}         % 住宿城市列
+\newcommand{\bookingDateWidth}{25mm}         % 第二列：入住和退房日期
+\newcommand{\bookingStayWidth}{37mm}         % 住宿名称列
+\newcommand{\bookingContactWidth}{29mm}      % 住宿联系电话列
+\newcommand{\bookingPostalWidth}{18mm}       % 邮编列；地址使用剩余宽度
+
+% ---------- 公共宏包、字体与颜色 ----------
+% 使用 XeLaTeX；优先使用系统字体，缺失时自动使用 TeX 自带字体。
+\usepackage[a4paper,left=\pageLeftMargin,right=\pageRightMargin,
+  top=\pageTopMargin,bottom=\pageBottomMargin]{geometry}
+\usepackage{lmodern} % 提供可缩放的后备字体，避免小字号替换警告
+\usepackage{fontspec,xeCJK}
+\usepackage{array,tabularx,longtable,ragged2e,etoolbox,needspace}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,microtype,enumitem}
+\IfFontExistsTF{Helvetica Neue}{%
+  \setmainfont{Helvetica Neue}[UprightFont=*,BoldFont=* Bold,
+    ItalicFont=* Italic,BoldItalicFont=* Bold Italic,
+    FontFace={mb}{n}{Font=* Medium}]
+}{%
+  \setmainfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,
+    ItalicFont=texgyreheros-italic.otf,BoldItalicFont=texgyreheros-bolditalic.otf,
+    FontFace={mb}{n}{Font=texgyreheros-regular.otf,FakeBold=0.5}]
+}
+% 使用字体自带的 Medium；后备字体缺少中等字重时仅轻微加粗。
+\newcommand{\mediumseries}{\fontseries{mb}\selectfont}
+\IfFontExistsTF{PingFang SC}{\setCJKmainfont{PingFang SC}}{\setCJKmainfont{FandolHei-Regular.otf}}
+\definecolor{Text}{gray}{0.08}        % 正文与模块横线
+\definecolor{Muted}{gray}{0.38}       % 副标题与小字字段键
+\definecolor{Rule}{gray}{0.82}        % 表格行间细横线
+\definecolor{HeaderRule}{gray}{0.47}  % 表头下方横线
+
+% ---------- 公共排版实现：通常只需修改上方参数 ----------
+\color{Text}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\arrayrulewidth}{\tableRowRuleWidth}
+\pagestyle{empty}
+\newcommand{\bodyfont}{\fontsize{\bodySize}{\bodyLeading}\selectfont\bodyWeight}
+\newcommand{\smallvaluefont}{\fontsize{\smallValueSize}{\smallValueLeading}\selectfont\fieldValueWeight}
+\newcommand{\summarykeyfont}{\fontsize{\summaryKeySize}{\smallValueLeading}\selectfont\summaryKeyWeight\color{Muted}}
+\newcommand{\visaCategory}[1]{\def\visaCategoryValue{#1}}
+
+% 三份文档共用标题；签证类型来自各自 info.tex 中的 \visaCategory{...}。
+\newcommand{\documenttitle}[1]{%
+  \begingroup\bodyfont\RaggedRight
+  \begin{center}
+    {\fontsize{\titleSize}{\titleLeading}\selectfont\titleWeight #1\par}%
+    \vspace{\titleSubtitleGap}%
+    {\fontsize{\subtitleSize}{\subtitleLeading}\selectfont\subtitleWeight\color{Muted}\visaCategoryValue\ Visa Application\par}%
+  \end{center}
+  \endgroup}
+
+% 可选参数覆盖当前模块上间距；首个模块使用 \subtitleBodyGap。
+\newcommand{\sectionhead}[2][\sectionTopGap]{%
+  \par\addvspace{#1}\Needspace{5\baselineskip}%
+  {\fontsize{\sectionTitleSize}{\sectionTitleLeading}\selectfont\sectionTitleWeight\MakeUppercase{#2}\par}%
+  \nobreak\vspace{\sectionRuleGap}{\color{Text}\hrule height \sectionRuleWidth}%
+  \nobreak\vspace{\sectionBottomGap}\nointerlineskip}
+
+% 个人信息的数据收集和布局由三份文档共用。
+\newcommand{\personalrows}{}
+\newcommand{\personalrow}[2]{\appto\personalrows{\renderpersonalfield{#1}{#2}}}
+\newcommand{\personalwide}[2]{\appto\personalrows{\renderpersonalwide{#1}{#2}}}
+\newsavebox{\personalleftbox}
+\newif\ifpersonalpending
+\newlength{\personalleftlabelwidth}
+\newlength{\personalrightlabelwidth}
+\setlength{\personalleftlabelwidth}{\personalLeftKeyWidth}
+\setlength{\personalrightlabelwidth}{\personalRightKeyWidth}
+\newcommand{\personalkeyvalue}[3]{%
+  \begin{minipage}[t]{#1}%
+    \RaggedRight\strut{\fieldKeyWeight\MakeUppercase{#2}}\strut
+  \end{minipage}\hspace{\personalKeyValueGap}%
+  \begin{minipage}[t]{\dimexpr\linewidth-#1-\personalKeyValueGap\relax}%
+    \RaggedRight\fieldValueWeight\strut #3\strut
+  \end{minipage}}
+\newcommand{\personalfield}[3]{%
+  \begin{minipage}[t]{\dimexpr(\linewidth-\personalColumnGap)/2\relax}%
+    \personalkeyvalue{#3}{#1}{#2}%
+  \end{minipage}}
+\newcommand{\renderpersonalfield}[2]{%
+  \ifpersonalpending
+    \noindent\usebox{\personalleftbox}\hfill\personalfield{#1}{#2}{\personalrightlabelwidth}\par\vspace{\personalRowGap}%
+    \personalpendingfalse
+  \else
+    \sbox{\personalleftbox}{\personalfield{#1}{#2}{\personalleftlabelwidth}}%
+    \personalpendingtrue
+  \fi}
+\newcommand{\flushpersonalrow}{%
+  \ifpersonalpending
+    \noindent\usebox{\personalleftbox}\par\vspace{\personalRowGap}%
+    \personalpendingfalse
+  \fi}
+\newcommand{\renderpersonalwide}[2]{%
+  \flushpersonalrow
+  \noindent\begin{minipage}[t]{\linewidth}%
+    \personalkeyvalue{\personalleftlabelwidth}{#1}{#2}%
+  \end{minipage}\par\vspace{\personalRowGap}}
+\newcommand{\personalinfo}{%
+  \begingroup\bodyfont\RaggedRight
+  \personalpendingfalse
+  \personalrows\flushpersonalrow
+  \endgroup}
+
+% 表格均左对齐；L 为固定宽度列，Y 自动占据剩余宽度。
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}m{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcommand{\tablestyle}{%
+  \fontsize{\tableBodySize}{\tableBodyLeading}\selectfont\bodyWeight
+  \setlength{\tabcolsep}{\tableCellPadding}%
+  \setlength{\arrayrulewidth}{\tableRowRuleWidth}%
+  \renewcommand{\arraystretch}{\tableRowStretch}%
+  \arrayrulecolor{Rule}}
+\newcommand{\tableheadrule}{\arrayrulecolor{HeaderRule}\specialrule{\tableHeaderRuleWidth}{0pt}{0pt}\arrayrulecolor{Rule}}
+\newcommand{\headcell}[1]{{\fontsize{\tableHeaderSize}{\tableHeaderLeading}\selectfont\tableHeaderWeight\color{Text}\MakeUppercase{#1}}}

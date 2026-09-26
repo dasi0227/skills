@@ -1,0 +1,80 @@
+% XeLaTeX entry point. Edit applicant information in info.tex only.
+\documentclass[10pt,a4paper]{article}
+\input{../style.tex}
+\usepackage[hidelinks,unicode]{hyperref}
+\setlength{\emergencystretch}{1em}
+\raggedbottom
+
+% Data collectors: info.tex contains values and repeatable entries only.
+\newcommand{\educationentries}{}
+\newcommand{\educationentry}[3]{%
+  \ifdefempty{\educationentries}{}{\appto\educationentries{\hline}}%
+  \appto\educationentries{#1 & #2 & #3\tabularnewline}}
+\newcommand{\travelrows}{}
+\newcommand{\travelentry}[3]{%
+  \ifdefempty{\travelrows}{}{\appto\travelrows{\hline}}%
+  \appto\travelrows{#1 & #2 & #3\tabularnewline}}
+\newcommand{\internshipentries}{}
+\newcommand{\internshipentry}[5]{\appto\internshipentries{\renderinternship{#1}{#2}{#3}{#4}{#5}}}
+\newcommand{\duty}[1]{\item #1}
+\newcommand{\otherrows}{}
+\newcommand{\otherentry}[2]{\ifblank{#2}{}{\appto\otherrows{\renderother{#1}{#2}}}}
+\input{info.tex}
+
+\hypersetup{pdftitle={Resume}}
+
+% Layout definitions: independent of the applicant's information.
+\newcommand{\entryhead}[3]{%
+  \begin{tabularx}{\linewidth}{@{}>{\RaggedRight\arraybackslash\internshipCompanyWeight}p{\internshipCompanyWidth}@{\hspace{\internshipColumnGap}}>{\RaggedRight\arraybackslash\internshipRoleShape}X@{\hspace{\internshipColumnGap}}>{\fontsize{\internshipDateSize}{\internshipDateLeading}\selectfont}r@{}}#1 & #2 & #3\end{tabularx}\par}
+\newcommand{\renderinternship}[5]{%
+  \par\addvspace{\internshipTopGap}\Needspace{9\baselineskip}%
+  \entryhead{#1}{#2}{#3}\nobreak
+  \ifstrempty{#4}{}{\vspace{\internshipOverviewGap}#4\par\nobreak}%
+  \begin{itemize}[leftmargin=\internshipListLeftMargin,label=\textbullet,labelsep=\internshipBulletGap,topsep=\internshipListTopGap,partopsep=0pt,itemsep=\internshipItemGap,parsep=0pt,beginpenalty=10000]
+    #5
+  \end{itemize}\par}
+\newcommand{\renderother}[2]{%
+  \par\noindent\begin{minipage}[t]{\otherKeyWidth}\RaggedRight\fieldKeyWeight #1\end{minipage}\hspace{\otherKeyValueGap}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\otherKeyWidth-\otherKeyValueGap\relax}\RaggedRight\fieldValueWeight #2\end{minipage}\par\vspace{\otherRowGap}}
+\newcommand{\resumetablestyle}{%
+  \tablestyle
+  \setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}%
+  \setlength{\LTleft}{0pt}\setlength{\LTright}{0pt plus 1fill}}
+\newcolumntype{T}{L{\resumeTableFirstWidth} L{\resumeTableSecondWidth} L{\dimexpr\linewidth-\resumeTableFirstWidth-\resumeTableSecondWidth-6\tabcolsep\relax}}
+\newcommand{\educationheader}{\headcell{School} & \headcell{Degree} & \headcell{Date}\tabularnewline\tableheadrule}
+\newcommand{\travelheader}{\headcell{Country / Region} & \headcell{Purpose} & \headcell{Date}\tabularnewline\tableheadrule}
+
+\begin{document}
+\documenttitle{Resume}
+
+\sectionhead[\subtitleBodyGap]{Personal Information}
+\bodyfont
+\RaggedRight
+\personalinfo
+
+\sectionhead{Education Experience}
+\begingroup
+\resumetablestyle
+\begin{longtable}{T}
+\educationheader\endfirsthead
+\educationheader\endhead
+\educationentries
+\end{longtable}
+\endgroup
+
+\sectionhead{Travel Experience}
+\begingroup
+\resumetablestyle
+\begin{longtable}{T}
+\travelheader\endfirsthead
+\travelheader\endhead
+\travelrows
+\end{longtable}
+\endgroup
+
+\sectionhead{Internship Experience}
+\internshipentries
+
+\sectionhead{Other Information}
+\otherrows
+\end{document}
