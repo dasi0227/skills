@@ -3,6 +3,8 @@
 
 # 仅跟踪仓库规则和自建业务 skill
 !/.gitignore
+!/avoid-defensive-checks/
+!/avoid-defensive-checks/**
 !/create-221g-documents/
 !/create-221g-documents/**
 !/icon-select/
